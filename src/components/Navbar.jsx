@@ -38,9 +38,37 @@ const Navbar = ({ user }) => {
 							>
 								About
 							</a>
+							<a
+								href="#treatments"
+								onClick={(e) => handleScroll(e, 'treatments')}
+								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
+							>
+								Treatments
+							</a>
+							<a
+								href="#specialists"
+								onClick={(e) => handleScroll(e, 'specialists')}
+								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
+							>
+								Specialists
+							</a>
+							<a
+								href="#contact"
+								onClick={(e) => handleScroll(e, 'contact')}
+								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
+							>
+								Contact us
+							</a>
 						</>
 					)}
 				</div>
+
+				<Link
+					to="/login"
+					className="bg-[#3C82F6] hover:bg-[#2A3342] px-4 py-2 rounded-xl text-white border border-[#3C82F6] hover:text-[#3C82F6] font-light transition ease-in-out"
+				>
+					Login
+				</Link>
 			</section>
 		</nav>
 	)
