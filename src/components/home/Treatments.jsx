@@ -1,7 +1,11 @@
 import React from 'react'
 
 const Treatments = () => {
-	return <div>Treatments</div>
+	return (
+		<section id="treatments" className="container mx-auto mb-48">
+			<div>Treatments</div>
+		</section>
+	)
 }
 
 export default Treatments

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
+import Footer from './components/Footer'
 
 const App = () => {
 	const [user, setUser] = useState(null)
@@ -17,7 +18,9 @@ const App = () => {
 					<Route path="/" element={<Home />} />
 				</Routes>
 			</main>
-			<footer></footer>
+			<footer>
+				<Footer />
+			</footer>
 		</div>
 	)
 }

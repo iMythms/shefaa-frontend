@@ -1,7 +1,11 @@
 import React from 'react'
 
 const Specialists = () => {
-	return <div>Specialists</div>
+	return (
+		<section id="specialists" className="container mx-auto mb-48">
+			<div>Specialists</div>
+		</section>
+	)
 }
 
 export default Specialists
