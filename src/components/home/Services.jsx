@@ -1,8 +1,17 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+	faStethoscope,
+	faVial,
+	faXRay,
+	faSyringe,
+	faTooth,
+	faDumbbell,
+} from '@fortawesome/free-solid-svg-icons'
 
 const Services = () => {
 	return (
-		<section id="services" className="container mx-auto mb-48">
+		<section id="services" className="container mx-auto mb-48 px-5 xl:px-0">
 			<div className="flex flex-col gap-12 items-center justify-center">
 				<div className="uppercase bg-[#c9deff] text-[#3C82F6] px-2 py-1 shadow-lg shadow-blue-400/10 text-sm rounded-full">
 					What we offer
@@ -22,13 +31,21 @@ const Services = () => {
 			</div>
 
 			{/* Service List */}
-			<div className="my-16 grid grid-cols-3 gap-8">
-				<div className="bg-white drop-shadow-custom rounded-3xl w-full p-8 flex flex-col gap-4">
+			<div className="my-16 lg:grid md:grid-cols-2 xl:grid-cols-3 flex flex-col gap-8">
+				<div className="bg-white drop-shadow-custom rounded-3xl w-full p-8 flex flex-col gap-6">
 					{/* Icon */}
-					<div className="">{/* Dummy */}</div>
+					<div className="bg-[#c9deff] w-fit p-4 rounded-full">
+						<FontAwesomeIcon
+							icon={faStethoscope}
+							size="2x"
+							style={{ color: '#2A3342' }}
+						/>
+					</div>
 
 					{/* Title */}
-					<h3 className="font-medium text-xl">General Consultation</h3>
+					<h3 className="font-semibold text-xl text-[#3C82F6]">
+						General Consultation
+					</h3>
 
 					{/* Description */}
 					<p className="text-balance font-normal text-base">
@@ -36,12 +53,20 @@ const Services = () => {
 						for common health issues.
 					</p>
 				</div>
-				<div className="bg-white drop-shadow-custom rounded-3xl w-full p-8 flex flex-col gap-4">
+				<div className="bg-white drop-shadow-custom rounded-3xl w-full p-8 flex flex-col gap-6">
 					{/* Icon */}
-					<div className="">{/* Dummy */}</div>
+					<div className="bg-[#c9deff] w-fit p-4 rounded-full">
+						<FontAwesomeIcon
+							icon={faVial}
+							size="2x"
+							style={{ color: '#2A3342' }}
+						/>
+					</div>
 
 					{/* Title */}
-					<h3 className="font-medium text-xl">Laboratory Testing</h3>
+					<h3 className="font-semibold text-xl text-[#3C82F6]">
+						Laboratory Testing
+					</h3>
 
 					{/* Description */}
 					<p className="text-balance font-normal text-base">
@@ -49,12 +74,20 @@ const Services = () => {
 						other specimen analyses to support accurate medical assessments.
 					</p>
 				</div>
-				<div className="bg-white drop-shadow-custom rounded-3xl w-full p-8 flex flex-col gap-4">
+				<div className="bg-white drop-shadow-custom rounded-3xl w-full p-8 flex flex-col gap-6">
 					{/* Icon */}
-					<div className="">{/* Dummy */}</div>
+					<div className="bg-[#c9deff] w-fit p-4 rounded-full">
+						<FontAwesomeIcon
+							icon={faXRay}
+							size="2x"
+							style={{ color: '#2A3342' }}
+						/>
+					</div>
 
 					{/* Title */}
-					<h3 className="font-medium text-xl">Radiology Services</h3>
+					<h3 className="font-semibold text-xl text-[#3C82F6]">
+						Radiology Services
+					</h3>
 
 					{/* Description */}
 					<p className="text-balance font-normal text-base">
@@ -62,12 +95,20 @@ const Services = () => {
 						diagnose internal conditions and monitor treatment progress.
 					</p>
 				</div>
-				<div className="bg-white drop-shadow-custom rounded-3xl w-full p-8 flex flex-col gap-4">
+				<div className="bg-white drop-shadow-custom rounded-3xl w-full p-8 flex flex-col gap-6">
 					{/* Icon */}
-					<div className="">{/* Dummy */}</div>
+					<div className="bg-[#c9deff] w-fit p-4 rounded-full">
+						<FontAwesomeIcon
+							icon={faSyringe}
+							size="2x"
+							style={{ color: '#2A3342' }}
+						/>
+					</div>
 
 					{/* Title */}
-					<h3 className="font-medium text-xl">Vaccination Clinic</h3>
+					<h3 className="font-semibold text-xl text-[#3C82F6]">
+						Vaccination Clinic
+					</h3>
 
 					{/* Description */}
 					<p className="text-balance font-normal text-base">
@@ -75,12 +116,18 @@ const Services = () => {
 						against seasonal and preventable diseases.
 					</p>
 				</div>
-				<div className="bg-white drop-shadow-custom rounded-3xl w-full p-8 flex flex-col gap-4">
+				<div className="bg-white drop-shadow-custom rounded-3xl w-full p-8 flex flex-col gap-6">
 					{/* Icon */}
-					<div className="">{/* Dummy */}</div>
+					<div className="bg-[#c9deff] w-fit p-4 rounded-full">
+						<FontAwesomeIcon
+							icon={faTooth}
+							size="2x"
+							style={{ color: '#2A3342' }}
+						/>
+					</div>
 
 					{/* Title */}
-					<h3 className="font-medium text-xl">Dental Care</h3>
+					<h3 className="font-semibold text-xl text-[#3C82F6]">Dental Care</h3>
 
 					{/* Description */}
 					<p className="text-balance font-normal text-base">
@@ -88,12 +135,18 @@ const Services = () => {
 						maintain oral health.
 					</p>
 				</div>
-				<div className="bg-white drop-shadow-custom rounded-3xl w-full p-8 flex flex-col gap-4">
+				<div className="bg-white drop-shadow-custom rounded-3xl w-full p-8 flex flex-col gap-6">
 					{/* Icon */}
-					<div className="">{/* Dummy */}</div>
+					<div className="bg-[#c9deff] w-fit p-4 rounded-full">
+						<FontAwesomeIcon
+							icon={faDumbbell}
+							size="2x"
+							style={{ color: '#2A3342' }}
+						/>
+					</div>
 
 					{/* Title */}
-					<h3 className="font-medium text-xl">
+					<h3 className="font-semibold text-xl text-[#3C82F6]">
 						Physiotherapy & Rehabilitation
 					</h3>
 

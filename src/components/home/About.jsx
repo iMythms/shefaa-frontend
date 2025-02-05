@@ -3,7 +3,7 @@ import AboutImage from '../../assets/aboutImage.jpg'
 
 const About = () => {
 	return (
-		<section className="container mx-auto mb-48" id="about">
+		<section className="container mx-auto mb-48 px-5 xl:px-0" id="about">
 			<div>
 				<div className="flex flex-col gap-12 items-center justify-center">
 					<div className="uppercase bg-[#c9deff] text-[#3C82F6] px-2 py-1 shadow-lg shadow-blue-400/10 text-xs rounded-full">
@@ -21,7 +21,7 @@ const About = () => {
 							the best treatment possible.
 						</p>
 					</div>
-					<img src={AboutImage} alt="aboutImage" className="w-1/2" />
+					<img src={AboutImage} alt="aboutImage" className="lg:w-1/2" />
 				</div>
 			</div>
 		</section>
