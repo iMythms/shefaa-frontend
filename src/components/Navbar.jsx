@@ -39,11 +39,11 @@ const Navbar = ({ user }) => {
 								About
 							</a>
 							<a
-								href="#treatments"
-								onClick={(e) => handleScroll(e, 'treatments')}
+								href="#services"
+								onClick={(e) => handleScroll(e, 'services')}
 								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
 							>
-								Treatments
+								Services
 							</a>
 							<a
 								href="#specialists"
