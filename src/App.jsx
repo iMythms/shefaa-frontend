@@ -1,6 +1,7 @@
 import './App.css'
 import React, { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
+
 import server from './services/server'
 
 import Navbar from './components/Navbar'
@@ -11,23 +12,7 @@ import Dashboard from './pages/Dashboard'
 
 const App = () => {
 	const [user, setUser] = useState(null)
-
-	const getUserProfile = async () => {
-		try {
-			const data = await server()
-			setUser(data)
-		} catch (error) {
-			console.error(
-				'Error fetching user profile: ',
-				error.response?.data || error.message
-			)
-			setUser(null)
-		}
-	}
-
-	useEffect(() => {
-		getUserProfile()
-	}, [])
+	const [message, setMessage] = useState(null)
 
 	const logOut = () => {
 		localStorage.removeItem('authToken')
@@ -42,7 +27,7 @@ const App = () => {
 			</header>
 			<main className="flex-grow">
 				<Routes>
-					<Route path="/" element={<Home />} />
+					<Route path="/" element={<Home />} server={server} />
 					<Route
 						path="/login"
 						element={<Signin />}

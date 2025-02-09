@@ -5,14 +5,14 @@ import Services from '../components/home/Services'
 import Specialists from '../components/home/Specialists'
 import Contact from '../components/home/Contact'
 
-const Home = () => {
+const Home = ({ server }) => {
 	return (
 		<div>
 			<main>
 				<Hero />
 				<About />
-				<Services />
-				<Specialists />
+				<Services server={server} />
+				<Specialists server={server} />
 				<Contact />
 			</main>
 		</div>

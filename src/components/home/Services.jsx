@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
 	faStethoscope,
@@ -9,7 +9,17 @@ import {
 	faDumbbell,
 } from '@fortawesome/free-solid-svg-icons'
 
-const Services = () => {
+const Services = ({ server }) => {
+	const [services, setServices] = useState(null)
+
+	const getServices = () => {
+		setServices(server.query('get', '/get-services'))
+	}
+
+	useEffect(() => {
+		getServices()
+	}, [])
+
 	return (
 		<section id="services" className="container mx-auto mb-48 px-5 xl:px-0">
 			<div className="flex flex-col gap-12 items-center justify-center">
