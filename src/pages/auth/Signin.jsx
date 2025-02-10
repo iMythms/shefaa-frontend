@@ -23,7 +23,11 @@ const Signin = ({ user, setUser, message, setMessage }) => {
 		try {
 			const response = await server.query('post', '/auth/login', formData)
 			setUser(response.user)
+
 			setMessage(response.message)
+			setTimeout(() => {
+				setMessage('')
+			}, 5000)
 
 			const token = await response.token
 			localStorage.setItem('authToken', token)

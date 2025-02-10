@@ -17,7 +17,10 @@ const Navbar = ({ user, logOut }) => {
 	return (
 		<nav className="bg-[#2A3342] h-24 flex items-center fixed top-0 w-full z-10">
 			<section className="container mx-auto flex items-center justify-between">
-				<Link to="/" className="flex items-center justify-center">
+				<Link
+					to="/"
+					className="flex items-center justify-center transform hover:scale-105 transition ease-linear hover:delay-75"
+				>
 					<img src={Logo} alt="Logo" className="h-12" />
 				</Link>
 
@@ -136,12 +139,12 @@ const Navbar = ({ user, logOut }) => {
 
 				{user ? (
 					<>
-						<Link
-							to="/auth/login"
-							className="bg-[#f63f3c] hover:bg-red-700 px-4 py-1.5  rounded-xl text-white border border-[#f63f3c] hover:border-red-700 font-light transition ease-in-out"
+						<button
+							onClick={logOut}
+							className="bg-[#f63f3c] hover:bg-red-700 px-4 py-1.5 rounded-xl text-white border border-[#f63f3c] hover:border-red-700 font-light cursor-pointer transition ease-in-out"
 						>
 							Logout
-						</Link>
+						</button>
 					</>
 				) : (
 					<>
