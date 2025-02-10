@@ -2,6 +2,16 @@ import React from 'react'
 import HeroImage from '../../assets/heroImage.png'
 
 const Hero = () => {
+	const handleScroll = (e, targetId) => {
+		e.preventDefault()
+		const targetElement = document.getElementById(targetId)
+		if (targetElement) {
+			const yOffset = -200 // Adjust the offset as needed
+			const y =
+				targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset
+			window.scrollTo({ top: y, behavior: 'smooth' })
+		}
+	}
 	return (
 		<section className="bg-[#2A3342] rounded-b-[64px] mb-48 px-5 xl:px-0">
 			<div className="pt-32 lg:pt-76 pb-28 lg:pb-48 container mx-auto lg:grid md:grid-cols-2 flex flex-col-reverse gap-16 lg:gap-32">
@@ -29,7 +39,8 @@ const Hero = () => {
 							+973 7711 1111
 						</a>
 						<a
-							href="#contact"
+							href="#appointment"
+							onClick={(e) => handleScroll(e, 'appointment')}
 							className="px-4 py-2 border border-[#3C82F6] hover:text-[#3C82F6] font-light rounded-xl hover:bg-[#2A3342] bg-[#3C82F6] text-white transition ease-in-out"
 						>
 							Book an Appointment
