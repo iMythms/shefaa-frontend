@@ -2,8 +2,6 @@ import './App.css'
 import React, { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
-import server from './services/server'
-
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Footer from './components/Footer'
@@ -23,21 +21,23 @@ const App = () => {
 	return (
 		<div className="flex flex-col min-h-screen">
 			<header>
-				<Navbar user={user} />
+				<Navbar user={user} logOut={logOut} />
 			</header>
 			<main className="flex-grow">
 				<Routes>
-					<Route path="/" element={<Home />} server={server} />
+					<Route path="/" element={<Home />} />
 					<Route
-						path="/login"
-						element={<Signin />}
-						getUserProfile={getUserProfile}
+						path="/auth/login"
+						element={
+							<Signin
+								user={user}
+								setUser={setUser}
+								message={message}
+								setMessage={setMessage}
+							/>
+						}
 					/>
-					<Route
-						path="/dashboard"
-						element={<Dashboard />}
-						getUserProfile={getUserProfile}
-					/>
+					<Route path="/dashboard" element={<Dashboard />} />
 				</Routes>
 			</main>
 			<footer>

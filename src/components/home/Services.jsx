@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
 	faStethoscope,
@@ -9,11 +9,13 @@ import {
 	faDumbbell,
 } from '@fortawesome/free-solid-svg-icons'
 
-const Services = ({ server }) => {
+import Server from '../../services/server'
+
+const Services = () => {
 	const [services, setServices] = useState(null)
 
 	const getServices = () => {
-		setServices(server.query('get', '/get-services'))
+		setServices(Server.query('get', '/get-services'))
 	}
 
 	useEffect(() => {

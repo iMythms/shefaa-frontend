@@ -2,14 +2,14 @@
 
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import server from '../../services/server'
 
-const Signin = ({ getUserProfile }) => {
+const Signin = ({ user, setUser, message, setMessage }) => {
 	const [formData, setFormData] = useState({
 		username: '',
 		password: '',
 	})
 
-	const [error, setError] = useState('')
 	const navigate = useNavigate()
 
 	const handleChange = (e) => {
@@ -18,29 +18,19 @@ const Signin = ({ getUserProfile }) => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
-		setError('')
+		setMessage('')
 
 		try {
-			const response = await fetch(
-				`${import.meta.env.VITE_BACKEND_URL}/auth/login`,
-				{
-					method: 'POST',
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify(formData),
-				}
-			)
-			if (!response.ok) {
-				const data = await response.json()
-				throw new Error(data.error || 'Login failed')
-			}
+			const response = await server.query('post', '/auth/login', formData)
+			setUser(response.user)
+			setMessage(response.message)
 
-			const { token } = await response.json()
+			const token = await response.token
 			localStorage.setItem('authToken', token)
 
-			// await getUserProfile()
 			navigate('/dashboard') // Redirect to Dashboard
 		} catch (err) {
-			setError(err.message)
+			setMessage(err.message)
 		}
 	}
 
@@ -48,7 +38,7 @@ const Signin = ({ getUserProfile }) => {
 		<section className="container mx-auto my-48 flex items-center justify-center">
 			<div className="w-full lg:w-1/2">
 				<h1 className="text-4xl font-bold mb-8 text-center">Login</h1>
-				{error && <p className="text-red-600 text-center">{error}</p>}
+				{message && <p className="text-black text-center">{message}</p>}
 				<div className="flex items-center justify-center bg-white p-12 drop-shadow-custom rounded-3xl">
 					<form
 						onSubmit={handleSubmit}

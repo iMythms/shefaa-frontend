@@ -2,7 +2,7 @@ import React from 'react'
 import Logo from '../assets/Vite.svg'
 import { Link } from 'react-router-dom'
 
-const Navbar = ({ user }) => {
+const Navbar = ({ user, logOut }) => {
 	const handleScroll = (e, targetId) => {
 		e.preventDefault()
 		const targetElement = document.getElementById(targetId)
@@ -21,12 +21,83 @@ const Navbar = ({ user }) => {
 					<img src={Logo} alt="Logo" className="h-12" />
 				</Link>
 
-				<div className="flex gap-8">
+				<div className="flex gap-1">
 					{/* Dynamic navigation items */}
+
 					{user ? (
 						<>
-							<Link to="/dashboard" className="">
+							{/* For everyone */}
+							<Link
+								to="/dashboard"
+								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
+							>
 								Dashboard
+							</Link>
+							<Link
+								to="/dashboard"
+								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
+							>
+								Profile
+							</Link>
+
+							{/* Admin & Reception & Doctors */}
+							<Link
+								to="/dashboard"
+								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
+							>
+								Appointment
+							</Link>
+
+							{/* Admin & Laboratorian */}
+							<Link
+								to="/dashboard"
+								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
+							>
+								Laboratory
+							</Link>
+
+							{/* Admin & Pharmacist */}
+							<Link
+								to="/dashboard"
+								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
+							>
+								Pharmacy
+							</Link>
+
+							{/* Admin & Accountant */}
+							<Link
+								to="/dashboard"
+								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
+							>
+								Invoices
+							</Link>
+
+							{/* Admin & Doctor */}
+							<Link
+								to="/dashboard"
+								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
+							>
+								Prescription
+							</Link>
+
+							{/* Only Admin */}
+							<Link
+								to="/dashboard"
+								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
+							>
+								Services
+							</Link>
+							<Link
+								to="/dashboard"
+								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
+							>
+								Doctors
+							</Link>
+							<Link
+								to="/dashboard"
+								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
+							>
+								Users
 							</Link>
 						</>
 					) : (
@@ -63,12 +134,25 @@ const Navbar = ({ user }) => {
 					)}
 				</div>
 
-				<Link
-					to="/login"
-					className="bg-[#3C82F6] hover:bg-[#2A3342] px-4 py-2 rounded-xl text-white border border-[#3C82F6] hover:text-[#3C82F6] font-light transition ease-in-out"
-				>
-					Login
-				</Link>
+				{user ? (
+					<>
+						<Link
+							to="/auth/login"
+							className="bg-[#f63f3c] hover:bg-red-700 px-4 py-1.5  rounded-xl text-white border border-[#f63f3c] hover:border-red-700 font-light transition ease-in-out"
+						>
+							Logout
+						</Link>
+					</>
+				) : (
+					<>
+						<Link
+							to="/auth/login"
+							className="bg-[#3C82F6] hover:bg-[#2A3342] px-4 py-1.5 rounded-xl text-white border border-[#3C82F6] hover:text-[#3C82F6] font-light transition ease-in-out"
+						>
+							Login
+						</Link>
+					</>
+				)}
 			</section>
 		</nav>
 	)
