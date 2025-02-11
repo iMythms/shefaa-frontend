@@ -11,6 +11,7 @@ const Specialists = () => {
 	const [userMobile, setUserMobile] = useState('')
 	const [userEmail, setUserEmail] = useState('')
 	const [userCPR, setUserCPR] = useState('')
+	const [userMessage, setUserMessage] = useState('')
 
 	// Fetch doctors from the database
 	useEffect(() => {
@@ -57,13 +58,17 @@ const Specialists = () => {
 		}
 
 		// Save preferred appointment request (not confirmed)
-		await server.query('post', 'get_appointment', {
+		const data = await server.query('post', 'get_appointment', {
+			name: userName,
+			cpr: userCPR,
+			phone: userMobile,
+			email: userEmail,
+			serviceId: 1,
 			doctorId: selectedDoctor,
-			date: selectedDate,
-			time: selectedTime,
-			status: 'pending', // Receptionist approval needed
+			appointmentDate: selectedDate + ' ' + selectedTime,
 		})
 
+		console.log(data)
 		alert(
 			'Your preferred appointment request has been submitted. The receptionist will confirm your appointment.'
 		)
@@ -296,8 +301,8 @@ const Specialists = () => {
 							<textarea
 								type="text"
 								placeholder="Enter your Message"
-								value={userCPR}
-								onChange={(e) => setUserCPR(e.target.value)}
+								value={userMessage}
+								onChange={(e) => setUserMessage(e.target.value)}
 								className="w-full bg-white p-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-[#3C82F6]"
 							/>
 						</div>
