@@ -3,10 +3,10 @@ import server from '../../services/server'
 
 const Specialists = () => {
 	const [specialists, setSpecialists] = useState(null)
+
 	const [selectedDoctor, setSelectedDoctor] = useState(null)
 	const [selectedDate, setSelectedDate] = useState(null)
 	const [selectedTime, setSelectedTime] = useState(null)
-
 	const [userName, setUserName] = useState('')
 	const [userMobile, setUserMobile] = useState('')
 	const [userEmail, setUserEmail] = useState('')
@@ -57,7 +57,7 @@ const Specialists = () => {
 		}
 
 		// Save preferred appointment request (not confirmed)
-		await server.query('post', 'request_appointment', {
+		await server.query('post', 'get_appointment', {
 			doctorId: selectedDoctor,
 			date: selectedDate,
 			time: selectedTime,
@@ -146,7 +146,7 @@ const Specialists = () => {
 										className={`p-3 rounded-full border-1 text-center cursor-pointer transform hover:scale-105 transition ease-linear hover:delay-75 ${
 											selectedDoctor === doctor.id
 												? 'bg-[#3C82F6] text-white border-[#3C82F6]'
-												: 'border-gray-300 text-gray-700'
+												: 'border-gray-300 text-gray-700 bg-white'
 										}`}
 									>
 										<h4 className="font-semibold">{doctor.name}</h4>
