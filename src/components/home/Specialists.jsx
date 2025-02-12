@@ -4,7 +4,9 @@ import server from '../../services/server'
 const Specialists = () => {
 	const [specialists, setSpecialists] = useState(null)
 
+	const [services, setServices] = useState(null)
 	const [selectedDoctor, setSelectedDoctor] = useState(null)
+	const [selectedService, setSelectedService] = useState(null)
 	const [selectedDate, setSelectedDate] = useState(null)
 	const [selectedTime, setSelectedTime] = useState(null)
 	const [userName, setUserName] = useState('')
@@ -13,13 +15,20 @@ const Specialists = () => {
 	const [userCPR, setUserCPR] = useState('')
 	const [userMessage, setUserMessage] = useState('')
 
+	const getSpecialists = async (id) => {
+		const data = await server.query('get', `srvdoctors/${id}`)
+		console.log(data)
+		console.log(id)
+		setSpecialists(data.doctors)
+	}
+
 	// Fetch doctors from the database
 	useEffect(() => {
-		const getSpecialists = async () => {
-			const data = await server.query('get', 'get_doctors')
-			setSpecialists(data.doctors)
+		const getServices = async () => {
+			const data = await server.query('get', 'get_services')
+			setServices(data.services)
 		}
-		getSpecialists()
+		getServices()
 	}, [])
 
 	// Generate available dates (Today + 7 days)
@@ -72,6 +81,12 @@ const Specialists = () => {
 		alert(
 			'Your preferred appointment request has been submitted. The receptionist will confirm your appointment.'
 		)
+	}
+
+	const handleServiceChange = async (event) => {
+		console.log(event)
+		setSelectedService(event.target.id)
+		getSpecialists(event.target.id)
 	}
 
 	return (
@@ -134,6 +149,31 @@ const Specialists = () => {
 								convenience. Submit your preferred date and time, and our
 								reception team will confirm your booking shortly.
 							</p>
+						</div>
+					</div>
+
+					{/* Services Selection */}
+					<div className="mb-9">
+						<h3 className="text-lg font-semibold text-gray-700 mb-6">
+							Select a Service
+						</h3>
+						<div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+							{services &&
+								services.map((service) => (
+									<button
+										key={service.id}
+										id={service.id}
+										// onClick={() => setServices(service.id)}
+										onClick={handleServiceChange}
+										className={`p-3 rounded-full font-semibold border-1 text-center cursor-pointer transform hover:scale-105 transition ease-linear hover:delay-75 ${
+											selectedDoctor === service.id
+												? 'bg-[#3C82F6] text-white border-[#3C82F6]'
+												: 'border-gray-300 text-gray-700 bg-white'
+										}`}
+									>
+										{service.title}
+									</button>
+								))}
 						</div>
 					</div>
 
