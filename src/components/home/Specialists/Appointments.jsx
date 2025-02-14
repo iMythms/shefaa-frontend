@@ -243,7 +243,7 @@ const Appointments = () => {
 						services.map((service) => (
 							<button
 								key={service.id}
-								className={`p-3 rounded-full font-semibold border-1 text-center cursor-pointer transform hover:scale-105 transition ease-linear hover:delay-75 ${
+								className={`p-3 rounded-full drop-shadow-custom font-semibold border-1 text-center cursor-pointer transform hover:scale-105 transition ease-linear hover:delay-75 ${
 									formData.selectedService === service.id
 										? 'bg-[#3C82F6] text-white border-[#3C82F6]'
 										: 'border-gray-300 text-gray-700 bg-white'
@@ -267,7 +267,7 @@ const Appointments = () => {
 							specialists.map((doctor) => (
 								<button
 									key={doctor.id}
-									className={`p-3 rounded-full font-semibold border-1 text-center cursor-pointer transform hover:scale-105 transition ease-linear hover:delay-75 ${
+									className={`p-3 rounded-full font-semibold drop-shadow-custom border-1 text-center cursor-pointer transform hover:scale-105 transition ease-linear hover:delay-75 ${
 										formData.selectedDoctor === doctor.id
 											? 'bg-[#3C82F6] text-white border-[#3C82F6]'
 											: 'border-gray-300 text-gray-700 bg-white'
@@ -299,7 +299,7 @@ const Appointments = () => {
 								selectedDate: date.fullDate,
 							}))
 						}
-						className={`w-16 h-24 px-2 py-4 rounded-full text-center border-1 cursor-pointer transform hover:scale-110 transition ease-linear hover:delay-75 ${
+						className={`w-16 h-24 px-2 py-4 rounded-full drop-shadow-custom text-center border-1 cursor-pointer transform hover:scale-110 transition ease-linear hover:delay-75 ${
 							formData.selectedDate === date.fullDate
 								? 'bg-[#3C82F6] text-white border-[#3C82F6]'
 								: 'border-gray-300 text-gray-700 bg-white'
@@ -330,7 +330,7 @@ const Appointments = () => {
 											selectedTime: time,
 										}))
 									}
-									className={`p-4 rounded-full text-sm border-1 cursor-pointer transform hover:scale-105 transition ease-linear hover:delay-75 ${
+									className={`p-4 rounded-full text-sm border-1 drop-shadow-custom cursor-pointer transform hover:scale-105 transition ease-linear hover:delay-75 ${
 										formData.selectedTime === time
 											? 'bg-[#3C82F6] text-white border-[#3C82F6]'
 											: 'border-gray-300 text-gray-700 bg-white'
@@ -357,7 +357,7 @@ const Appointments = () => {
 											selectedTime: time,
 										}))
 									}
-									className={`p-4 rounded-full text-sm border-1 cursor-pointer transform hover:scale-105 transition ease-linear hover:delay-75 ${
+									className={`p-4 rounded-full text-sm border-1 drop-shadow-custom cursor-pointer transform hover:scale-105 transition ease-linear hover:delay-75 ${
 										formData.selectedTime === time
 											? 'bg-[#3C82F6] text-white border-[#3C82F6]'
 											: 'border-gray-300 text-gray-700 bg-white'
