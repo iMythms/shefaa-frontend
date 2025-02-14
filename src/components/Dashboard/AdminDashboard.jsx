@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import server from '../../services/server'
 import {
 	BarChart,
@@ -9,6 +10,17 @@ import {
 	Legend,
 	ResponsiveContainer,
 } from 'recharts'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+	faCalendarCheck,
+	faUserDoctor,
+	faClipboardList,
+	faPills,
+	faUsers,
+	faFileInvoiceDollar,
+	faHistory,
+} from '@fortawesome/free-solid-svg-icons'
 
 const AdminDashboard = ({ user }) => {
 	const [appointments, setAppointments] = useState([])
@@ -65,10 +77,10 @@ const AdminDashboard = ({ user }) => {
 	if (error) return <p className="text-red-500 text-center mt-10">{error}</p>
 
 	return (
-		<section className="container mx-auto my-48">
+		<section className="container mx-auto mt-48 mb-24">
 			<h1 className="text-2xl font-bold mb-6">Admin Dashboard</h1>
 			<h2 className="text-xl mb-8">
-				Welcome <span className="font-semibold">{user.name}!</span>
+				Welcome back <span className="font-semibold">{user.name}!</span>
 			</h2>
 
 			{/* Quick Links */}
@@ -84,74 +96,147 @@ const AdminDashboard = ({ user }) => {
 
 			{/* Dashboard Overview */}
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-				<div className="bg-white drop-shadow-custom rounded-xl p-6">
-					<h3 className="font-semibold text-lg mb-3">Appointments</h3>
-					<p className="text-gray-600">{appointments.length} Total</p>
+				{/* Appointments Card */}
+				<div className="bg-white drop-shadow-custom rounded-xl p-6 flex items-center gap-4">
+					<div className="p-2 rounded-full">
+						<FontAwesomeIcon
+							icon={faCalendarCheck}
+							style={{ color: '#000000' }}
+							size="2x"
+							className="text-[#2A3342]"
+						/>
+					</div>
+					<div>
+						<h3 className="font-semibold text-lg">Appointments</h3>
+						<p className="text-gray-600">{appointments.length} Total</p>
+					</div>
 				</div>
 
-				<div className="bg-white drop-shadow-custom rounded-xl p-6">
-					<h3 className="font-semibold text-lg mb-3">Doctors</h3>
-					<p className="text-gray-600">{doctors.length} Registered</p>
+				{/* Doctors Card */}
+				<div className="bg-white drop-shadow-custom rounded-xl p-6 flex items-center gap-4">
+					<div className="p-2 rounded-full">
+						<FontAwesomeIcon
+							icon={faUserDoctor}
+							style={{ color: '#000000' }}
+							size="2x"
+							className="text-[#2A3342]"
+						/>
+					</div>
+					<div>
+						<h3 className="font-semibold text-lg">Doctors</h3>
+						<p className="text-gray-600">{doctors.length} Registered</p>
+					</div>
 				</div>
 
-				<div className="bg-white drop-shadow-custom rounded-xl p-6">
-					<h3 className="font-semibold text-lg mb-3">Services</h3>
-					<p className="text-gray-600">{services.length} Available</p>
+				{/* Services Card */}
+				<div className="bg-white drop-shadow-custom rounded-xl p-6 flex items-center gap-4">
+					<div className="p-2 rounded-full">
+						<FontAwesomeIcon
+							icon={faClipboardList}
+							style={{ color: '#000000' }}
+							size="2x"
+							className="text-[#2A3342]"
+						/>
+					</div>
+					<div>
+						<h3 className="font-semibold text-lg">Services</h3>
+						<p className="text-gray-600">{services.length} Available</p>
+					</div>
 				</div>
 
-				<div className="bg-white drop-shadow-custom rounded-xl p-6">
-					<h3 className="font-semibold text-lg mb-3">Prescriptions</h3>
-					<p className="text-gray-600">{prescriptions.length} Issued</p>
+				{/* Prescriptions Card */}
+				<div className="bg-white drop-shadow-custom rounded-xl p-6 flex items-center gap-4">
+					<div className="p-2 rounded-full">
+						<FontAwesomeIcon
+							icon={faPills}
+							style={{ color: '#000000' }}
+							size="2x"
+							className="text-[#2A3342]"
+						/>
+					</div>
+					<div>
+						<h3 className="font-semibold text-lg">Prescriptions</h3>
+						<p className="text-gray-600">{prescriptions.length} Issued</p>
+					</div>
 				</div>
 			</div>
-
-			{/* Charts & Analytics */}
-			{/* <div className="bg-white drop-shadow-custom rounded-xl p-6 mt-10">
-				<h3 className="font-semibold text-lg mb-4">Appointments Trend</h3>
-				<ResponsiveContainer width="100%" height={300}>
-					<BarChart data={appointments}>
-						<XAxis dataKey="date" />
-						<YAxis />
-						<Tooltip />
-						<Legend />
-						<Bar dataKey="total" fill="#3C82F6" />
-					</BarChart>
-				</ResponsiveContainer>
-			</div> */}
 
 			{/* User Management & Pending Actions */}
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-10">
 				<div className="bg-white drop-shadow-custom rounded-xl p-6">
-					<h3 className="font-semibold text-lg mb-3">User Management</h3>
-					<p className="text-gray-600">{users.length} Registered Users</p>
+					<div className="flex gap-2 items-center">
+						<div className="p-2 rounded-full">
+							<FontAwesomeIcon
+								icon={faUsers}
+								style={{ color: '#000000' }}
+								size="3x"
+								className="text-[#2A3342]"
+							/>
+						</div>
+						<div>
+							<h3 className="font-semibold text-lg mb-1">User Management</h3>
+							<p className="text-gray-600">{users.length} Registered Users</p>
+						</div>
+					</div>
 					<div className="flex justify-end mt-4">
-						{' '}
-						{/* Align to the right */}
-						<button className="bg-gray-800 hover:bg-gray-950 cursor-pointer text-white px-4 py-2 rounded-lg">
+						<Link
+							to="/users"
+							className="bg-gray-800 hover:bg-gray-950 text-white px-4 py-2 rounded-lg"
+						>
 							Manage Users
-						</button>
+						</Link>
 					</div>
 				</div>
 
 				<div className="bg-white drop-shadow-custom rounded-xl p-6">
-					<h3 className="font-semibold text-lg mb-3">Unpaid Invoices</h3>
-					<p className="text-gray-600">{unpaidInvoices.length} Pending</p>
+					<div className="flex gap-2 items-center">
+						<div className="p-2 rounded-full">
+							<FontAwesomeIcon
+								icon={faFileInvoiceDollar}
+								style={{ color: '#000000' }}
+								size="3x"
+								className="text-[#2A3342]"
+							/>
+						</div>
+						<div>
+							<h3 className="font-semibold text-lg mb-1">Unpaid Invoices</h3>
+							<p className="text-gray-600">{unpaidInvoices.length} Pending</p>
+						</div>
+					</div>
+
 					<div className="flex justify-end mt-4">
-						{' '}
-						{/* Align to the right */}
-						<button className="bg-gray-800 hover:bg-gray-950 cursor-pointer text-white px-4 py-2 rounded-lg">
+						<Link
+							to="/invoices"
+							className="bg-gray-800 hover:bg-gray-950 text-white px-4 py-2 rounded-lg"
+						>
 							View Invoices
-						</button>
+						</Link>
 					</div>
 				</div>
 			</div>
 
 			{/* Recent Activities */}
 			<div className="bg-white drop-shadow-custom rounded-xl p-6 mt-10">
-				<h3 className="font-semibold text-lg mb-4">Recent Activities</h3>
+				<div className="flex gap-2 items-center">
+					<div className="p-2 rounded-full">
+						<FontAwesomeIcon
+							icon={faHistory}
+							style={{ color: '#000000' }}
+							size="2x"
+							className="text-[#2A3342]"
+						/>
+					</div>
+					<div className="p-1">
+						<h3 className="font-semibold text-lg mb-1">Recent Activities</h3>
+						<p className="text-gray-600">
+							{logs.filter((log) => isWithinWeek(log.date)).length} New activity
+							this week
+						</p>
+					</div>
+				</div>
 				<ul className="text-gray-600">
 					{logs.slice(0, 5).map((log, index) => (
-						<li key={index} className="border-b py-2">
+						<li key={index} className="border-b py-4">
 							{log.message}
 						</li>
 					))}

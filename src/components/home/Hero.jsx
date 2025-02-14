@@ -14,7 +14,7 @@ const Hero = () => {
 	}
 	return (
 		<section className="bg-[#2A3342] rounded-b-[64px] mb-48 px-5 xl:px-0">
-			<div className="pt-32 lg:pt-76 pb-28 lg:pb-48 container mx-auto lg:grid md:grid-cols-2 flex flex-col-reverse gap-16 lg:gap-32">
+			<div className="pt-32 lg:pt-72 pb-28 lg:pb-48 container mx-auto lg:grid md:grid-cols-2 flex flex-col-reverse gap-16 lg:gap-32">
 				<div className="flex flex-col gap-6 items-center lg:items-start justify-center lg:justify-start">
 					<a
 						href="https://maps.app.goo.gl/JNGevNRSYpKcmHQm6"

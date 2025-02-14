@@ -67,14 +67,6 @@ const Navbar = ({ user, logOut }) => {
 								Pharmacy
 							</Link>
 
-							{/* Admin & Accountant */}
-							<Link
-								to="/dashboard"
-								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
-							>
-								Invoices
-							</Link>
-
 							{/* Admin & Doctor */}
 							<Link
 								to="/dashboard"
@@ -95,12 +87,6 @@ const Navbar = ({ user, logOut }) => {
 								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
 							>
 								Doctors
-							</Link>
-							<Link
-								to="/dashboard"
-								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
-							>
-								Users
 							</Link>
 						</>
 					) : (

@@ -7,6 +7,10 @@ import Home from './pages/Home'
 import Footer from './components/Footer'
 import Signin from './pages/auth/Signin'
 import Dashboard from './pages/Dashboard'
+import UserManagement from './pages/UserManagement'
+import UserDetails from './pages/UserDetails'
+import UserEdit from './pages/UserEdit'
+import Invoices from './pages/Invoices'
 
 const App = () => {
 	const [user, setUser] = useState(null)
@@ -38,6 +42,10 @@ const App = () => {
 						}
 					/>
 					<Route path="/dashboard" element={<Dashboard user={user} />} />
+					<Route path="/users" element={<UserManagement />} />
+					<Route path="/users/:id" element={<UserDetails />} />
+					<Route path="/users/:id/edit" element={<UserEdit />} />
+					<Route path="/invoices" element={<Invoices />} />
 				</Routes>
 			</main>
 			<footer>
