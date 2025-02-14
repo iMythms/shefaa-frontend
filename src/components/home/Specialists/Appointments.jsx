@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import server from '../../../services/server'
 
 const generateDates = () => {
@@ -27,6 +27,10 @@ const generateTimeSlots = () => {
 }
 
 const Appointments = () => {
+	const [showSuccess, setShowSuccess] = useState(false)
+	const [showError, setShowError] = useState(false)
+	const appointmentRef = useRef(null)
+
 	const [services, setServices] = useState(null)
 	const [specialists, setSpecialists] = useState([]) // Fixed specialists state
 	const [formData, setFormData] = useState({
@@ -56,7 +60,7 @@ const Appointments = () => {
 
 		try {
 			const data = await server.query('get', `srvdoctors/${serviceId}`)
-			setSpecialists(data.doctors) // Update state with fetched doctors
+			setSpecialists(data.doctors)
 		} catch (error) {
 			console.error('Error fetching doctors:', error)
 		}
@@ -74,12 +78,13 @@ const Appointments = () => {
 		} = formData
 
 		if (!selectedDoctor || !selectedDate || !selectedTime) {
-			alert('Please select a doctor, date, and time')
+			setShowError(true)
 			return
 		}
 
 		try {
-			const data = await server.query('post', 'get_appointment', {
+			// Prepare request payload
+			const requestData = {
 				name: userName,
 				cpr: userCPR,
 				phone: userMobile,
@@ -87,16 +92,66 @@ const Appointments = () => {
 				serviceId: formData.selectedService,
 				doctorId: selectedDoctor,
 				appointmentDate: `${selectedDate} ${selectedTime}`,
-			})
+			}
 
-			console.log(data)
-			alert(
-				'Your preferred appointment request has been submitted. The receptionist will confirm your appointment.'
-			)
+			console.log('Sending request:', requestData)
+
+			// Send request
+			const data = await server.query('post', 'get_appointment', requestData)
+
+			console.log('API Response:', data)
+
+			// Success Condition (Check if response contains success message)
+			if (
+				data &&
+				data.message &&
+				data.message.toLowerCase().includes('success')
+			) {
+				setShowSuccess(true)
+				setShowError(false)
+
+				// Reset form after successful submission
+				setFormData({
+					selectedService: null,
+					selectedDoctor: null,
+					selectedDate: null,
+					selectedTime: null,
+					userName: '',
+					userMobile: '',
+					userEmail: '',
+					userCPR: '',
+					userMessage: '',
+				})
+
+				setSpecialists([])
+
+				// Hide success message after 8 seconds
+				setTimeout(() => setShowSuccess(false), 8000)
+			} else {
+				// If response doesn't contain success, treat as error
+				throw new Error(data.error || 'Unknown error occurred')
+			}
 		} catch (error) {
-			console.error('Error submitting appointment:', error)
+			console.error('Submission Error:', error)
+
+			// Show error message
+			setShowError(true)
+			setShowSuccess(false)
+
+			// Hide error message after 8 seconds
+			setTimeout(() => setShowError(false), 8000)
 		}
 	}
+
+	useEffect(() => {
+		if (showSuccess || showError) {
+			setTimeout(() => {
+				if (appointmentRef.current) {
+					appointmentRef.current.scrollIntoView({ behavior: 'smooth' })
+				}
+			}, 200) // Small delay to ensure DOM updates before scrolling
+		}
+	}, [showSuccess, showError])
 
 	// Fetch available services
 	useEffect(() => {
@@ -112,7 +167,7 @@ const Appointments = () => {
 	}, []) // Add dependency array to run only once
 
 	return (
-		<section id="appointment" className="mt-48">
+		<section id="appointment" className="mt-48" ref={appointmentRef}>
 			<div className="flex flex-col gap-12 items-center justify-center mb-16">
 				<div className="uppercase bg-[#c9deff] text-[#3C82F6] px-2 py-1 shadow-lg shadow-blue-400/10 text-sm rounded-full">
 					Book an Appointment
@@ -130,6 +185,54 @@ const Appointments = () => {
 				</div>
 			</div>
 
+			{/* Error Message */}
+			{showError && (
+				<div className="bg-red-50 border border-red-400 text-red-700 px-4 py-3 rounded-xl mb-6 flex items-center">
+					<svg
+						className="h-5 w-5 text-red-700 mr-2"
+						fill="none"
+						stroke="currentColor"
+						strokeWidth="2"
+						viewBox="0 0 24 24"
+					>
+						<path
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							d="M6 18L18 6M6 6l12 12"
+						></path>
+					</svg>
+					<div>
+						<h3 className="font-semibold">Error!</h3>
+						<p>Something went wrong. Please try again.</p>
+					</div>
+				</div>
+			)}
+
+			{/* Success Message */}
+			{showSuccess && (
+				<div className="bg-green-50 border border-green-400 text-green-700 px-4 py-3 rounded-xl mb-6 flex items-center">
+					<svg
+						className="h-5 w-5 text-green-700 mr-2"
+						fill="none"
+						stroke="currentColor"
+						strokeWidth="2"
+						viewBox="0 0 24 24"
+					>
+						<path
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							d="M5 13l4 4L19 7"
+						></path>
+					</svg>
+					<div>
+						<h3 className="font-semibold">Success!</h3>
+						<p>
+							Your preferred appointment request has been submitted. The
+							receptionist will confirm your appointment.
+						</p>
+					</div>
+				</div>
+			)}
 			{/* Service Selection */}
 			<div className="mb-9">
 				<h3 className="text-lg font-semibold text-gray-700 mb-6">
