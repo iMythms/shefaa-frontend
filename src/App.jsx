@@ -15,9 +15,21 @@ import UserEdit from './pages/UserEdit'
 import Invoices from './pages/Invoices'
 import Appointments from './pages/Appointments'
 
+import Server from './services/server'
+
 const App = () => {
 	const [user, setUser] = useState(null)
 	const [message, setMessage] = useState(null)
+
+	const getUser = async () => {
+		const data = await Server.query('get', 'auth/loggedUser')
+		console.log('user data = ', data.user)
+		setUser(data.user.user)
+		console.log('user = ', user)
+	}
+	useEffect(() => {
+		getUser()
+	}, [])
 
 	const logOut = () => {
 		localStorage.removeItem('authToken')
