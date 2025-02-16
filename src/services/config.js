@@ -15,11 +15,13 @@ client.interceptors.request.use((config) => {
 client.interceptors.response.use(
 	(response) => response,
 	(error) => {
-		if (error?.response?.status === 401) {
-			console.error('Unauthorized.')
-			localStorage.removeItem('authToken')
+		let response
+		if (error.response) {
+			response = error.response
+		} else {
+			response = error
 		}
-		return Promise.reject(error)
+		return Promise.reject(response)
 	}
 )
 export default client

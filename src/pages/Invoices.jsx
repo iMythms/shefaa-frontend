@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import server from '../services/server'
 
-const Invoices = () => {
+const Invoices = ({ user }) => {
 	const [invoices, setInvoices] = useState([])
 
 	useEffect(() => {

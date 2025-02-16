@@ -107,7 +107,7 @@ const AdminDashboard = ({ user }) => {
 						/>
 					</div>
 					<div>
-						<h3 className="font-semibold text-lg">Appointments</h3>
+						<h3 className="font-semibold text-lg">Today's App.</h3>
 						<p className="text-gray-600">{appointments.length} Total</p>
 					</div>
 				</div>

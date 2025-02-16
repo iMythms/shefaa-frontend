@@ -45,10 +45,10 @@ const Navbar = ({ user, logOut }) => {
 
 							{/* Admin & Reception & Doctors */}
 							<Link
-								to="/dashboard"
+								to="/appointments"
 								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
 							>
-								Appointment
+								Appointments
 							</Link>
 
 							{/* Admin & Laboratorian */}

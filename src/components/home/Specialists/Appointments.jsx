@@ -18,12 +18,10 @@ const generateDates = () => {
 const generateTimeSlots = () => {
 	let slots = []
 	for (let hour = 8; hour < 16; hour++) {
-		slots.push(`${hour}:00 AM`)
-		slots.push(`${hour}:30 AM`)
+		slots.push(`${hour}:00`)
+		slots.push(`${hour}:30`)
 	}
-	return slots.map((time) =>
-		time.includes('12:') ? time.replace('AM', 'PM') : time
-	)
+	return slots
 }
 
 const Appointments = () => {
@@ -336,7 +334,7 @@ const Appointments = () => {
 											: 'border-gray-300 text-gray-700 bg-white'
 									}`}
 								>
-									{time}
+									{time} AM
 								</button>
 							))}
 					</div>
@@ -363,7 +361,7 @@ const Appointments = () => {
 											: 'border-gray-300 text-gray-700 bg-white'
 									}`}
 								>
-									{time}
+									{time} PM
 								</button>
 							))}
 					</div>
@@ -388,7 +386,7 @@ const Appointments = () => {
 							name="userName"
 							value={formData.userName}
 							onChange={handleInputChange}
-							className="w-full bg-white px-3 py-2.5 border border-gray-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-[#3C82F6]"
+							className="w-full bg-white drop-shadow-custom px-3 py-2.5 rounded-2xl focus:outline-none focus:ring-1 focus:ring-[#3C82F6]"
 						/>
 					</div>
 
@@ -403,7 +401,7 @@ const Appointments = () => {
 							name="userCPR"
 							value={formData.userCPR}
 							onChange={handleInputChange}
-							className="w-full bg-white px-3 py-2.5 border border-gray-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-[#3C82F6]"
+							className="w-full bg-white drop-shadow-custom px-3 py-2.5 rounded-2xl focus:outline-none focus:ring-1 focus:ring-[#3C82F6]"
 						/>
 					</div>
 
@@ -418,7 +416,7 @@ const Appointments = () => {
 							name="userMobile"
 							value={formData.userMobile}
 							onChange={handleInputChange}
-							className="w-full bg-white px-3 py-2.5 border border-gray-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-[#3C82F6]"
+							className="w-full bg-white drop-shadow-custom px-3 py-2.5 rounded-2xl focus:outline-none focus:ring-1 focus:ring-[#3C82F6]"
 						/>
 					</div>
 
@@ -433,7 +431,7 @@ const Appointments = () => {
 							name="userEmail"
 							value={formData.userEmail}
 							onChange={handleInputChange}
-							className="w-full bg-white px-3 py-2.5 border border-gray-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-[#3C82F6]"
+							className="w-full bg-white drop-shadow-custom px-3 py-2.5 rounded-2xl focus:outline-none focus:ring-1 focus:ring-[#3C82F6]"
 						/>
 					</div>
 				</div>
@@ -448,7 +446,7 @@ const Appointments = () => {
 						name="userMessage"
 						value={formData.userMessage}
 						onChange={handleInputChange}
-						className="w-full bg-white p-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-[#3C82F6]"
+						className="w-full bg-white drop-shadow-custom px-3 py-2.5 rounded-2xl focus:outline-none focus:ring-1 focus:ring-[#3C82F6]"
 					/>
 				</div>
 			</div>
@@ -456,7 +454,7 @@ const Appointments = () => {
 			{/* Confirm Button */}
 			<div className="text-center mt-12">
 				<button
-					className="bg-[#3C82F6] text-white px-6 py-3 rounded-2xl hover:bg-[#316fd4] transition-all cursor-pointer"
+					className="bg-[#3C82F6] text-white px-4 py-2.5 rounded-2xl hover:bg-[#316fd4] transition-all cursor-pointer"
 					onClick={handleSubmit}
 					disabled={
 						!formData.selectedDoctor ||

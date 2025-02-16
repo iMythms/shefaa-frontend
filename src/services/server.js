@@ -14,7 +14,7 @@ const query = async (op, url, data = []) => {
 		}
 		return response.data
 	} catch (error) {
-		return { error: error.message }
+		return { error: error.data.error }
 	}
 }
 export default {

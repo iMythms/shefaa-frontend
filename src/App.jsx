@@ -2,6 +2,8 @@ import './App.css'
 import React, { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
+import '@schedule-x/theme-shadcn/dist/index.css'
+
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Footer from './components/Footer'
@@ -11,6 +13,7 @@ import UserManagement from './pages/UserManagement'
 import UserDetails from './pages/UserDetails'
 import UserEdit from './pages/UserEdit'
 import Invoices from './pages/Invoices'
+import Appointments from './pages/Appointments'
 
 const App = () => {
 	const [user, setUser] = useState(null)
@@ -45,7 +48,8 @@ const App = () => {
 					<Route path="/users" element={<UserManagement />} />
 					<Route path="/users/:id" element={<UserDetails />} />
 					<Route path="/users/:id/edit" element={<UserEdit />} />
-					<Route path="/invoices" element={<Invoices />} />
+					<Route path="/invoices" element={<Invoices user={user} />} />
+					<Route path="/appointments" element={<Appointments user={user} />} />
 				</Routes>
 			</main>
 			<footer>

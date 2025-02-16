@@ -62,7 +62,7 @@ const UserEdit = () => {
 						{/* Name */}
 						<div className="space-y-2 flex flex-col">
 							<label htmlFor="name">Name</label>
-							<div className="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
+							<div className="flex items-center rounded-lg border border-gray-300 bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
 								<input
 									type="text"
 									id="name"
@@ -79,7 +79,7 @@ const UserEdit = () => {
 						{/* Email */}
 						<div className="space-y-2 flex flex-col">
 							<label htmlFor="email">Email</label>
-							<div className="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
+							<div className="flex items-center rounded-lg border border-gray-300 bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
 								<input
 									type="email"
 									id="email"
@@ -96,7 +96,7 @@ const UserEdit = () => {
 						{/* CPR */}
 						<div className="space-y-2 flex flex-col">
 							<label htmlFor="cpr">CPR</label>
-							<div className="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
+							<div className="flex items-center rounded-lg border border-gray-300 bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
 								<input
 									type="text"
 									id="cpr"
@@ -112,7 +112,7 @@ const UserEdit = () => {
 						{/* Phone */}
 						<div className="space-y-2 flex flex-col">
 							<label htmlFor="phone">Phone</label>
-							<div className="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
+							<div className="flex items-center rounded-lg border border-gray-300 bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
 								<input
 									type="text"
 									id="phone"
@@ -126,29 +126,10 @@ const UserEdit = () => {
 							</div>
 						</div>
 
-						{/* Role */}
-						<div className="space-y-2 flex flex-col">
-							<label htmlFor="role">Role</label>
-							<div className="flex items-center rounded-md bg-white px-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
-								<select
-									id="role"
-									name="role"
-									value={user.role}
-									onChange={handleChange}
-									className="block min-w-0 grow py-1.5 px-1 text-base text-gray-900 focus:outline-none sm:text-sm/6"
-								>
-									<option value="admin">Admin</option>
-									<option value="doctor">Doctor</option>
-									<option value="receptionist">Receptionist</option>
-									<option value="patient">Patient</option>
-								</select>
-							</div>
-						</div>
-
 						{/* Status */}
 						<div className="space-y-2 flex flex-col">
 							<label htmlFor="status">Status</label>
-							<div className="flex items-center rounded-md bg-white px-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
+							<div className="flex items-center rounded-lg border border-gray-300 bg-white px-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
 								<select
 									id="status"
 									name="status"
