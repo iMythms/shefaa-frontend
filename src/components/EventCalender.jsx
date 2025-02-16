@@ -72,7 +72,7 @@ const EventCalendar = () => {
 			headerToolbar={{
 				left: 'prev,next today',
 				center: 'title',
-				right: 'dayGridMonth,timeGridWeek,resourceTimeGridDay',
+				right: 'resourceTimeGridWeek,resourceTimeGridDay',
 			}}
 			resources={resources}
 			events={events}
