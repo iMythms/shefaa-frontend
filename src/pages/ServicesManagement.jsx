@@ -9,6 +9,18 @@ import {
 	TableRow,
 } from '@/components/ui/table'
 
+import {
+	AlertDialog,
+	AlertDialogAction,
+	AlertDialogCancel,
+	AlertDialogContent,
+	AlertDialogDescription,
+	AlertDialogFooter,
+	AlertDialogHeader,
+	AlertDialogTitle,
+	AlertDialogTrigger,
+} from '@/components/ui/alert-dialog'
+
 import { Link } from 'react-router-dom'
 
 import server from '@/services/server'
@@ -17,6 +29,16 @@ const ServicesManagement = () => {
 	const [services, setServices] = useState([])
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState(null)
+
+	const handleDelete = async (serviceId) => {
+		try {
+			await server.query('delete', `services/${serviceId}`)
+			setServices(services.filter((service) => service.id !== serviceId))
+		} catch (error) {
+			console.error('Error deleting service:', error)
+			setError('Failed to delete service.')
+		}
+	}
 
 	useEffect(() => {
 		const fetchServices = async () => {
@@ -84,12 +106,33 @@ const ServicesManagement = () => {
 											>
 												Edit
 											</Link>
-											<button
-												onClick={() => handleDelete(service.id)}
-												className="bg-red-600 hover:bg-red-700 text-white cursor-pointer px-4 py-1.5 rounded-lg"
-											>
-												Delete
-											</button>
+											<AlertDialog>
+												<AlertDialogTrigger asChild>
+													<button className="bg-red-600 hover:bg-red-700 text-white cursor-pointer px-4 py-1.5 rounded-lg">
+														Delete
+													</button>
+												</AlertDialogTrigger>
+												<AlertDialogContent>
+													<AlertDialogHeader>
+														<AlertDialogTitle>
+															Are you absolutely sure?
+														</AlertDialogTitle>
+														<AlertDialogDescription>
+															This action cannot be undone. This will
+															permanently delete the service.
+														</AlertDialogDescription>
+													</AlertDialogHeader>
+													<AlertDialogFooter>
+														<AlertDialogCancel>Cancel</AlertDialogCancel>
+														<AlertDialogAction
+															onClick={() => handleDelete(service.id)}
+															className="bg-red-600 hover:bg-red-700"
+														>
+															Confirm
+														</AlertDialogAction>
+													</AlertDialogFooter>
+												</AlertDialogContent>
+											</AlertDialog>
 										</div>
 									</TableCell>
 								</TableRow>
