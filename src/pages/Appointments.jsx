@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import server from '../services/server'
 import EventCalendar from '@/components/EventCalender'
 import AppointmentsTable from '@/components/AppointmentsTable'
+import TestCalendar from '@/components/TestCalendar'
 
 const Appointments = ({ user }) => {
 	return (
@@ -11,6 +12,8 @@ const Appointments = ({ user }) => {
 			<div className="flex flex-col gap-32">
 				<AppointmentsTable />
 				<EventCalendar />
+
+				<TestCalendar />
 			</div>
 		</section>
 	)
