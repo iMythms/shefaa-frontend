@@ -14,6 +14,9 @@ import UserDetails from './pages/UserDetails'
 import UserEdit from './pages/UserEdit'
 import Invoices from './pages/Invoices'
 import Appointments from './pages/Appointments'
+import ServicesManagement from './pages/ServicesManagement'
+import ServiceDetails from './pages/ServiceDetails'
+import ServiceEdit from './pages/ServiceEdit'
 
 import Server from './services/server'
 
@@ -62,6 +65,9 @@ const App = () => {
 					<Route path="/users/:id/edit" element={<UserEdit />} />
 					<Route path="/invoices" element={<Invoices user={user} />} />
 					<Route path="/appointments" element={<Appointments user={user} />} />
+					<Route path="/services" element={<ServicesManagement />} />
+					<Route path="/services/:id" element={<ServiceDetails />} />
+					<Route path="/services/:id/edit" element={<ServiceEdit />} />
 				</Routes>
 			</main>
 			<footer>

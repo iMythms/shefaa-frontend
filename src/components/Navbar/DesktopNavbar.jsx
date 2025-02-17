@@ -68,7 +68,7 @@ const DesktopNavbar = ({ user, logOut }) => {
 								Prescription
 							</Link>
 							<Link
-								to="/dashboard"
+								to="/services"
 								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
 							>
 								Services
