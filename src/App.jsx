@@ -2,8 +2,6 @@ import './App.css'
 import React, { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
-import '@schedule-x/theme-shadcn/dist/index.css'
-
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Footer from './components/Footer'
@@ -17,6 +15,10 @@ import Appointments from './pages/Appointments'
 import ServicesManagement from './pages/ServicesManagement'
 import ServiceDetails from './pages/ServiceDetails'
 import ServiceEdit from './pages/ServiceEdit'
+
+import DoctorsManagement from './pages/DoctorsManagement'
+import DoctorDetails from './pages/DoctorDetails'
+import DoctorEdit from './pages/DoctorEdit'
 
 import Server from './services/server'
 
@@ -60,14 +62,27 @@ const App = () => {
 						}
 					/>
 					<Route path="/dashboard" element={<Dashboard user={user} />} />
+
+					{/* Users Routes */}
 					<Route path="/users" element={<UserManagement />} />
 					<Route path="/users/:id" element={<UserDetails />} />
 					<Route path="/users/:id/edit" element={<UserEdit />} />
+
+					{/* Invoices Routes */}
 					<Route path="/invoices" element={<Invoices user={user} />} />
+
+					{/* Appointments Routes */}
 					<Route path="/appointments" element={<Appointments user={user} />} />
+
+					{/* Services Routes */}
 					<Route path="/services" element={<ServicesManagement />} />
 					<Route path="/services/:id" element={<ServiceDetails />} />
 					<Route path="/services/:id/edit" element={<ServiceEdit />} />
+
+					{/* Doctors Routes */}
+					<Route path="/doctors" element={<DoctorsManagement />} />
+					<Route path="/doctors/:id" element={<DoctorDetails />} />
+					<Route path="/doctors/:id/edit" element={<DoctorEdit />} />
 				</Routes>
 			</main>
 			<footer>

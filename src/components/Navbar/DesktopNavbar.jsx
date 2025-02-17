@@ -74,7 +74,7 @@ const DesktopNavbar = ({ user, logOut }) => {
 								Services
 							</Link>
 							<Link
-								to="/dashboard"
+								to="/doctors"
 								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
 							>
 								Doctors
