@@ -1,6 +1,7 @@
 import './App.css'
 import React, { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import Server from './services/server'
 
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
@@ -20,7 +21,7 @@ import DoctorsManagement from './pages/DoctorsManagement'
 import DoctorDetails from './pages/DoctorDetails'
 import DoctorEdit from './pages/DoctorEdit'
 
-import Server from './services/server'
+import PrescriptionManagement from './pages/PrescriptionManagement'
 
 const App = () => {
 	const [user, setUser] = useState(null)
@@ -83,6 +84,9 @@ const App = () => {
 					<Route path="/doctors" element={<DoctorsManagement />} />
 					<Route path="/doctors/:id" element={<DoctorDetails />} />
 					<Route path="/doctors/:id/edit" element={<DoctorEdit />} />
+
+					{/* Prescription */}
+					<Route path="/prescription" element={<PrescriptionManagement />} />
 				</Routes>
 			</main>
 			<footer>

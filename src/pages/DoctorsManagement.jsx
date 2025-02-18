@@ -31,7 +31,8 @@ const DoctorsManagement = () => {
 
 	const handleDelete = async (doctorId) => {
 		try {
-			await server.query('delete', `doctors/${doctorId}`)
+			const ba6ee5 = await server.query('delete', `doctors/${doctorId}`)
+			console.log(ba6ee5)
 			setDoctors(doctors.filter((doctor) => doctor.id !== doctorId))
 		} catch (error) {
 			console.error('Error deleting doctor:', error)

@@ -106,7 +106,7 @@ const AppointmentsTable = () => {
 							<TableRow key={appt.id}>
 								<TableCell className="font-medium">{appt.id}</TableCell>
 								<TableCell>{appt.patientname}</TableCell>
-								<TableCell>{appt.doctorname}</TableCell>
+								<TableCell>{appt.doctor}</TableCell>
 								<TableCell>{appt.service}</TableCell>
 								<TableCell>
 									{new Date(appt.date).toLocaleDateString()}

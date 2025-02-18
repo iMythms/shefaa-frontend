@@ -31,7 +31,8 @@ const UsersManagement = () => {
 
 	const handleDelete = async (userId) => {
 		try {
-			await server.query('delete', `users/${userId}`)
+			const data = await server.query('delete', `users/${userId}`)
+			console.log(data)
 			setUsers(users.filter((user) => user.id !== userId))
 		} catch (error) {
 			console.error('Error deleting user:', error)
