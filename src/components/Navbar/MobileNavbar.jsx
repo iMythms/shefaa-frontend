@@ -5,10 +5,10 @@ import Logo from '../../assets/Vite.svg'
 const MobileNavbar = ({ user, logOut, isMenuOpen, setIsMenuOpen }) => {
 	return (
 		<div className="lg:hidden w-full bg-[#2A3342] border-b-2 border-[#222935]">
-			<div className="container mx-auto px-5 h-14">
+			<div className="container mx-auto px-5 h-auto">
 				<div className="flex justify-between items-center py-5">
 					{/* Logo */}
-					<div className="h-5">
+					<div className="h-9">
 						<Link to="/">
 							<img
 								src={Logo}
@@ -74,7 +74,7 @@ const MobileNavbar = ({ user, logOut, isMenuOpen, setIsMenuOpen }) => {
 								Appointments
 							</Link>
 							<Link
-								to="/dashboard"
+								to="/appointments"
 								className="text-[#8896AB] text-lg py-2"
 								onClick={() => setIsMenuOpen(false)}
 							>
@@ -95,14 +95,14 @@ const MobileNavbar = ({ user, logOut, isMenuOpen, setIsMenuOpen }) => {
 								Prescription
 							</Link>
 							<Link
-								to="/dashboard"
+								to="/services"
 								className="text-[#8896AB] text-lg py-2"
 								onClick={() => setIsMenuOpen(false)}
 							>
 								Services
 							</Link>
 							<Link
-								to="/dashboard"
+								to="/doctors"
 								className="text-[#8896AB] text-lg py-2"
 								onClick={() => setIsMenuOpen(false)}
 							>
@@ -146,14 +146,14 @@ const MobileNavbar = ({ user, logOut, isMenuOpen, setIsMenuOpen }) => {
 					{user ? (
 						<button
 							onClick={logOut}
-							className="bg-[#f63f3c] hover:bg-red-700 px-4 py-2 rounded-md mt-2 text-white border border-[#f63f3c] hover:border-red-700 transition ease-in-out"
+							className="bg-[#f63f3c] hover:bg-red-700 px-4 py-2 rounded-xl mt-2 text-white border border-[#f63f3c] hover:border-red-700 transition ease-in-out"
 						>
 							Logout
 						</button>
 					) : (
 						<Link
 							to="/auth/login"
-							className="bg-[#3C82F6] hover:bg-[#2A3342] px-4 py-2 rounded-md mt-2 text-white border border-[#3C82F6] hover:text-[#3C82F6] transition ease-in-out"
+							className="bg-[#3C82F6] hover:bg-[#2A3342] px-4 py-2 rounded-xl mt-2 text-white border border-[#3C82F6] hover:text-[#3C82F6] transition ease-in-out"
 						>
 							Login
 						</Link>

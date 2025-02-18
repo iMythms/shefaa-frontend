@@ -77,7 +77,7 @@ const AdminDashboard = ({ user }) => {
 	if (error) return <p className="text-red-500 text-center mt-10">{error}</p>
 
 	return (
-		<section className="container mx-auto mt-48 mb-24">
+		<section className="container mx-auto my-24 xl:my-48 px-5 xl:px-0">
 			<h1 className="text-2xl font-bold mb-6">Admin Dashboard</h1>
 			<h2 className="text-xl mb-8">
 				Welcome back <span className="font-semibold">{user.name}!</span>
