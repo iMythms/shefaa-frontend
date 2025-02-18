@@ -91,7 +91,7 @@ export const NewAppModal = ({ appData, open, setOpen, onSubmit, services }) => {
               <Input id="email" name="email" className="col-span-3" />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label className="text-right">Patient email:</Label>
+              <Label className="text-right">Description:</Label>
               <Textarea
                 id="description"
                 name="description"

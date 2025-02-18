@@ -180,16 +180,19 @@ const EventCalendar = () => {
     console.log(event.target.email.value)
     console.log(event.target.services.value)
     console.log(event.target.description.value)
-    // const data = server.query('post', 'appointments', {
-    //   name: event.target.name.value,
-    //   cpr: event.target.cpr.value,
-    //   phone: event.target.phone.value,
-    //   email: event.target.email.value,
-    //   serviceId: event.target.services.value,
-    //   doctorId: event.target.docId.value,
-    //   appointmentDate: event.target.date.value,
-    //   description: event.target.description.value
-    // })
+
+    const newApp = {
+      name: event.target.name.value,
+      cpr: event.target.cpr.value,
+      phone: event.target.phone.value,
+      email: event.target.email.value,
+      serviceId: event.target.services.value,
+      doctorId: event.target.docId.value,
+      appointmentDate: event.target.date.value,
+      description: event.target.description.value
+    }
+    const data = await server.query('post', 'appointments', newApp)
+    console.log(data)
 
     setNewAppOpen(false)
   }
