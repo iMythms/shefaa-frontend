@@ -1,32 +1,61 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import server from '../services/server'
+import React, { useEffect, useState } from 'react'
 import EventCalendar from '@/components/EventCalender'
 import AppointmentsTable from '@/components/AppointmentsTable'
-import TestCalendar from '@/components/TestCalendar'
-
-import { ThemeProvider } from '@mui/material/styles'
-import theme from '../styles/theme'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper
-} from '@mui/material'
+import DoctorAppointments from '@/components/DoctorAppointments'
 
 const Appointments = ({ user }) => {
-  return (
-    <section className="container mx-auto mt-48 mb-24">
-      <h1 className="text-2xl font-bold mb-6">Appointments</h1>
-      <div className="flex flex-col gap-32">
-        <AppointmentsTable />
-        <EventCalendar />
-      </div>
-    </section>
-  )
+	const [loading, setLoading] = useState(true)
+	const [role, setRole] = useState(null)
+
+	useEffect(() => {
+		if (user) {
+			setRole(user.role) // Directly use user.role
+			console.log(user.role)
+			setLoading(false)
+		} else {
+			setLoading(false) // No user, stop loading
+		}
+	}, [user])
+
+	if (loading)
+		return (
+			<p className="flex items-center justify-center min-h-screen">
+				Loading dashboard...
+			</p>
+		)
+
+	if (!user || !role)
+		return (
+			<p className="text-red-500 flex items-center justify-center min-h-screen">
+				Access Denied
+			</p>
+		)
+
+	switch (role) {
+		case 'admin':
+			return (
+				<>
+					<AppointmentsTable />
+					<EventCalendar />
+				</>
+			)
+		case 'doctor':
+			return <DoctorAppointments user={user} />
+		case 'receptionist':
+			return (
+				<>
+					<AppointmentsTable />
+					<EventCalendar />
+				</>
+			)
+
+		default:
+			return (
+				<p className="text-red-500 flex items-center justify-center min-h-screen">
+					Access Denied
+				</p>
+			)
+	}
 }
 
 export default Appointments

@@ -22,6 +22,7 @@ import DoctorDetails from './pages/DoctorDetails'
 import DoctorEdit from './pages/DoctorEdit'
 
 import PrescriptionManagement from './pages/PrescriptionManagement'
+import PrescriptionDetails from './pages/PrescriptionDetails'
 
 const App = () => {
 	const [user, setUser] = useState(null)
@@ -87,6 +88,7 @@ const App = () => {
 
 					{/* Prescription */}
 					<Route path="/prescription" element={<PrescriptionManagement />} />
+					<Route path="/prescriptions/:id" element={<PrescriptionDetails />} />
 				</Routes>
 			</main>
 			<footer>

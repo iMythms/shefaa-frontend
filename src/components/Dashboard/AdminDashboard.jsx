@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import server from '../../services/server'
-import {
-	BarChart,
-	Bar,
-	XAxis,
-	YAxis,
-	Tooltip,
-	Legend,
-	ResponsiveContainer,
-} from 'recharts'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {

@@ -22,7 +22,7 @@
 		"@fullcalendar/react": "^6.1.15",
 		"@fullcalendar/resource-timegrid": "^6.1.15",
 		"@fullcalendar/timegrid": "^6.1.15",
-		"@hookform/resolvers": "^4.0.0",
+		"@hookform/resolvers": "^4.1.0",
 		"@mui/material": "^6.4.4",
 		"@primer/octicons-react": "^19.14.0",
 		"@radix-ui/react-alert-dialog": "^1.1.6",

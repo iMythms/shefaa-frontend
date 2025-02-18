@@ -49,36 +49,46 @@ const DesktopNavbar = ({ user, logOut }) => {
 							>
 								Appointments
 							</Link>
-							<Link
-								to="/dashboard"
-								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
-							>
-								Laboratory
-							</Link>
-							<Link
-								to="/dashboard"
-								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
-							>
-								Pharmacy
-							</Link>
-							<Link
-								to="/prescription"
-								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
-							>
-								Prescription
-							</Link>
-							<Link
-								to="/services"
-								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
-							>
-								Services
-							</Link>
-							<Link
-								to="/doctors"
-								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
-							>
-								Doctors
-							</Link>
+							{user.role === 'laboratorist' && (
+								<Link
+									to="/dashboard"
+									className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
+								>
+									Laboratory
+								</Link>
+							)}
+
+							{user.role === 'pharmacist' && (
+								<Link
+									to="/dashboard"
+									className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
+								>
+									Pharmacy
+								</Link>
+							)}
+
+							{user.role === 'admin' && (
+								<>
+									<Link
+										to="/prescription"
+										className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
+									>
+										Prescription
+									</Link>
+									<Link
+										to="/services"
+										className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
+									>
+										Services
+									</Link>
+									<Link
+										to="/doctors"
+										className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
+									>
+										Doctors
+									</Link>
+								</>
+							)}
 						</>
 					) : (
 						<>
