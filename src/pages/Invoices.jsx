@@ -121,7 +121,7 @@ const Invoices = ({ user }) => {
               paidInvoices.map((app) => (
                 <TableRow key={app.id}>
                   <TableCell className="font-medium">{app.id}</TableCell>
-                  <TableCell>{app.patientName}</TableCell>
+                  <TableCell>{app.patientname}</TableCell>
                   <TableCell>{app.doctor}</TableCell>
                   <TableCell>{app.date}</TableCell>
                   <TableCell>{app.amount}</TableCell>
