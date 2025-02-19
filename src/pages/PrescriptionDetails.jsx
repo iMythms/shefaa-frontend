@@ -1,6 +1,6 @@
 import server from '@/services/server'
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { debounce } from 'lodash'
 
@@ -32,6 +32,7 @@ import { Button } from '@/components/ui/button'
 
 const PrescriptionDetails = () => {
   const { id } = useParams()
+  const navigate = useNavigate()
   const [prescription, setPrescription] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -187,6 +188,7 @@ const PrescriptionDetails = () => {
     console.log(data)
     const submit = await server.query('post', `prescriptions/${id}`, data)
     console.log(submit)
+    navigate('/appointments')
   }
 
   if (loading)
