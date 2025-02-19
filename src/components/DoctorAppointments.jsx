@@ -105,12 +105,14 @@ const DoctorAppointments = ({ user }) => {
                 <TableCell>
                   <div className="flex space-x-2 justify-center">
                     {appt.status !== 'complete' ? (
-                      <Link
-                        to={`/prescription/${appt.id}`}
-                        className="bg-gray-800 hover:bg-gray-950 text-white px-4 py-1.5 rounded-lg"
-                      >
-                        Prescription
-                      </Link>
+                      appt.status !== 'invoiced' ? (
+                        <Link
+                          to={`/prescription/${appt.id}`}
+                          className="bg-gray-800 hover:bg-gray-950 text-white px-4 py-1.5 rounded-lg"
+                        >
+                          Prescription
+                        </Link>
+                      ) : null
                     ) : null}
                   </div>
                 </TableCell>

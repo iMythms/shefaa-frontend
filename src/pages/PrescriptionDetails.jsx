@@ -51,6 +51,8 @@ const PrescriptionDetails = () => {
   const [medicines, setMedicines] = useState([])
   const [labTests, setLabTests] = useState([])
 
+  const [submitted, setSubmitted] = useState(false)
+
   const form = useForm({
     resolver: zodResolver(
       z.object({
@@ -130,6 +132,8 @@ const PrescriptionDetails = () => {
 
   // Medicine Handlers
   const addMedicine = async () => {
+    console.log('here 1')
+    setSubmitted(true)
     const data = form.getValues(['medicineName', 'dosage', 'frequency'])
     console.log(data)
 
@@ -161,6 +165,7 @@ const PrescriptionDetails = () => {
   }
 
   const addLabTest = async (e) => {
+    setSubmitted(true)
     const labTest = form.getValues('labRequest')
     console.log(e.target)
     console.log(labTest)
@@ -178,17 +183,21 @@ const PrescriptionDetails = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('✅ Final Prescription Submitted:')
-    const data = {
-      appointmentId: id,
-      icdId: form.getValues('icdCode'),
-      caseHistory: e.target.caseHistory.value,
-      Medication: e.target.Medication.value
+    if (!submitted) {
+      console.log('✅ Final Prescription Submitted:')
+      const data = {
+        appointmentId: id,
+        icdId: form.getValues('icdCode'),
+        caseHistory: e.target.caseHistory.value,
+        Medication: e.target.Medication.value
+      }
+      console.log(data)
+      const submit = await server.query('post', `prescriptions/${id}`, data)
+      console.log(submit)
+      navigate('/appointments')
+    } else {
+      setSubmitted(false)
     }
-    console.log(data)
-    const submit = await server.query('post', `prescriptions/${id}`, data)
-    console.log(submit)
-    navigate('/appointments')
   }
 
   if (loading)
@@ -357,7 +366,9 @@ const PrescriptionDetails = () => {
                   />
                 </TableCell>
                 <TableCell>
-                  <Button onClick={addMedicine}>Add</Button>
+                  <Button id="med" name="med" onClick={addMedicine}>
+                    Add
+                  </Button>
                 </TableCell>
               </TableRow>
             </TableBody>
@@ -430,7 +441,9 @@ const PrescriptionDetails = () => {
                     )}
                   </TableCell>
                   <TableCell>
-                    <Button onClick={addLabTest}>Add Lab Test</Button>
+                    <Button id="lab" name="lab" onClick={addLabTest}>
+                      Add Lab Test
+                    </Button>
                   </TableCell>
                 </TableRow>
               </TableBody>
@@ -438,7 +451,7 @@ const PrescriptionDetails = () => {
           </FormItem>
 
           {/* Action Buttons */}
-          <Button type="submit" className="mt-9">
+          <Button id="save" name="save" type="submit" className="mt-9">
             Save Patient File
           </Button>
         </form>
