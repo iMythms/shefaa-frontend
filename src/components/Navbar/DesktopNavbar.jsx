@@ -69,12 +69,12 @@ const DesktopNavbar = ({ user, logOut }) => {
 
 							{user.role === 'admin' && (
 								<>
-									<Link
+									{/* <Link
 										to="/prescription"
 										className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
 									>
 										Prescription
-									</Link>
+									</Link> */}
 									<Link
 										to="/services"
 										className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"

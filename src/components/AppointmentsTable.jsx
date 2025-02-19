@@ -73,7 +73,8 @@ const AppointmentsTable = () => {
 	const totalPages = Math.max(1, Math.ceil(appointments.length / itemsPerPage)) // ✅ Fix for empty state
 
 	return (
-		<section className="container mx-auto mt-10 mb-6">
+		<section className="container mx-auto mt-48 mb-6">
+			<h1 className="text-2xl font-bold mb-12">Appointments</h1>
 			<Table>
 				<TableCaption>List of scheduled appointments.</TableCaption>
 				<TableHeader>
