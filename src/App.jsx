@@ -25,77 +25,77 @@ import PrescriptionManagement from './pages/PrescriptionManagement'
 import PrescriptionDetails from './pages/PrescriptionDetails'
 
 const App = () => {
-	const [user, setUser] = useState(null)
-	const [message, setMessage] = useState(null)
+  const [user, setUser] = useState(null)
+  const [message, setMessage] = useState(null)
 
-	const getUser = async () => {
-		const data = await Server.query('get', 'auth/loggedUser')
-		console.log('user data = ', data.user)
-		setUser(data.user.user)
-		console.log('user = ', user)
-	}
-	useEffect(() => {
-		getUser()
-	}, [])
+  const getUser = async () => {
+    const data = await Server.query('get', 'auth/loggedUser')
+    console.log('user data = ', data.user)
+    setUser(data.user.user)
+    console.log('user = ', user)
+  }
+  useEffect(() => {
+    getUser()
+  }, [])
 
-	const logOut = () => {
-		localStorage.removeItem('authToken')
-		setUser(null)
-		window.location.href = '/'
-	}
+  const logOut = () => {
+    localStorage.removeItem('authToken')
+    setUser(null)
+    window.location.href = '/'
+  }
 
-	return (
-		<div className="flex flex-col min-h-screen">
-			<header>
-				<Navbar user={user} logOut={logOut} />
-			</header>
-			<main className="flex-grow">
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route
-						path="/auth/login"
-						element={
-							<Signin
-								user={user}
-								setUser={setUser}
-								message={message}
-								setMessage={setMessage}
-							/>
-						}
-					/>
-					<Route path="/dashboard" element={<Dashboard user={user} />} />
+  return (
+    <div className="flex flex-col min-h-screen">
+      <header>
+        <Navbar user={user} logOut={logOut} />
+      </header>
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/auth/login"
+            element={
+              <Signin
+                user={user}
+                setUser={setUser}
+                message={message}
+                setMessage={setMessage}
+              />
+            }
+          />
+          <Route path="/dashboard" element={<Dashboard user={user} />} />
 
-					{/* Users Routes */}
-					<Route path="/users" element={<UserManagement />} />
-					<Route path="/users/:id" element={<UserDetails />} />
-					<Route path="/users/:id/edit" element={<UserEdit />} />
+          {/* Users Routes */}
+          <Route path="/users" element={<UserManagement />} />
+          <Route path="/users/:id" element={<UserDetails />} />
+          <Route path="/users/:id/edit" element={<UserEdit />} />
 
-					{/* Invoices Routes */}
-					<Route path="/invoices" element={<Invoices user={user} />} />
+          {/* Invoices Routes */}
+          <Route path="/invoices" element={<Invoices user={user} />} />
 
-					{/* Appointments Routes */}
-					<Route path="/appointments" element={<Appointments user={user} />} />
+          {/* Appointments Routes */}
+          <Route path="/appointments" element={<Appointments user={user} />} />
 
-					{/* Services Routes */}
-					<Route path="/services" element={<ServicesManagement />} />
-					<Route path="/services/:id" element={<ServiceDetails />} />
-					<Route path="/services/:id/edit" element={<ServiceEdit />} />
+          {/* Services Routes */}
+          <Route path="/services" element={<ServicesManagement />} />
+          <Route path="/services/:id" element={<ServiceDetails />} />
+          <Route path="/services/:id/edit" element={<ServiceEdit />} />
 
-					{/* Doctors Routes */}
-					<Route path="/doctors" element={<DoctorsManagement />} />
-					<Route path="/doctors/:id" element={<DoctorDetails />} />
-					<Route path="/doctors/:id/edit" element={<DoctorEdit />} />
+          {/* Doctors Routes */}
+          <Route path="/doctors" element={<DoctorsManagement />} />
+          <Route path="/doctors/:id" element={<DoctorDetails />} />
+          <Route path="/doctors/:id/edit" element={<DoctorEdit />} />
 
-					{/* Prescription */}
-					<Route path="/prescription" element={<PrescriptionManagement />} />
-					<Route path="/prescriptions/:id" element={<PrescriptionDetails />} />
-				</Routes>
-			</main>
-			<footer>
-				<Footer />
-			</footer>
-		</div>
-	)
+          {/* Prescription */}
+          <Route path="/prescription" element={<PrescriptionManagement />} />
+          <Route path="/prescription/:id" element={<PrescriptionDetails />} />
+        </Routes>
+      </main>
+      <footer>
+        <Footer />
+      </footer>
+    </div>
+  )
 }
 
 export default App
