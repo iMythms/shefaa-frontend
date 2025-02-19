@@ -31,25 +31,20 @@ export const AppDetailsModal = ({ appData, open, setOpen, changeStatus }) => {
           <div className="grid grid-cols-4 items-center gap-4">
             <Label className="text-right">Date:</Label>
             <Label className="col-span-3">{appData.startStr}</Label>
-
-            {/* <Input id="name" value="Pedro Duarte" className="col-span-3" /> */}
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label className="text-right">Doctor:</Label>
             <Label className="col-span-3">{appData.extendedProps.doctor}</Label>
-            {/* <Input id="username" value="@peduarte" className="col-span-3" /> */}
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label className="text-right">Description:</Label>
             <Label className="col-span-3">
               {appData.extendedProps.description}
             </Label>
-            {/* <Input id="username" value="@peduarte" className="col-span-3" /> */}
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label className="text-right">Status:</Label>
             <Label className="col-span-3">{appData.extendedProps.status}</Label>
-            {/* <Input id="username" value="@peduarte" className="col-span-3" /> */}
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             {appData.extendedProps.status === 'new' ? (

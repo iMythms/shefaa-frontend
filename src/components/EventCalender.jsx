@@ -169,31 +169,45 @@ const EventCalendar = () => {
     }
   }
 
-  const handelSubmit = async (event) => {
-    event.preventDefault()
-    console.log(event.target.date.value)
-    console.log(event.target.docId.value)
-    console.log(event.target.doctor.value)
-    console.log(event.target.name.value)
-    console.log(event.target.phone.value)
-    console.log(event.target.cpr.value)
-    console.log(event.target.email.value)
-    console.log(event.target.services.value)
-    console.log(event.target.description.value)
-
+  const handelSubmit = async (e) => {
+    e.preventDefault()
     const newApp = {
-      name: event.target.name.value,
-      cpr: event.target.cpr.value,
-      phone: event.target.phone.value,
-      email: event.target.email.value,
-      serviceId: event.target.services.value,
-      doctorId: event.target.docId.value,
-      appointmentDate: event.target.date.value,
-      description: event.target.description.value
+      name: e.target.name.value,
+      cpr: e.target.cpr.value,
+      phone: e.target.phone.value,
+      email: e.target.email.value,
+      serviceId: e.target.services.value,
+      doctorId: e.target.docId.value,
+      appointmentDate: e.target.date.value,
+      description: e.target.description.value
     }
     const data = await server.query('post', 'appointments', newApp)
-    console.log(data)
+    const appDetails = await server.query(
+      'get',
+      `appointments/${data.appointment.id}`
+    )
+    console.log('appDetails = ', appDetails)
 
+    const event = {
+      id: appDetails.appointment.appointmentid,
+      title: `${appDetails.appointment.patientname}`,
+      start: appDetails.appointment.date,
+      end: new Date(
+        new Date(appDetails.appointment.date).getTime() +
+          appDetails.appointment.duration * 60000
+      ).toISOString(),
+      resourceId: `${appDetails.appointment.docid}`,
+      extendedProps: {
+        description: appDetails.appointment.description,
+        status: appDetails.appointment.status,
+        service: appDetails.appointment.service,
+        serviceId: appDetails.appointment.serviceid,
+        doctor: appDetails.appointment.doctor
+      },
+      backgroundColor: colors[appDetails.appointment.status]
+    }
+    events.push(event)
+    setEvents(events)
     setNewAppOpen(false)
   }
 
