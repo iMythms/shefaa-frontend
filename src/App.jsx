@@ -12,6 +12,7 @@ import UserManagement from './pages/UserManagement'
 import UserDetails from './pages/UserDetails'
 import UserEdit from './pages/UserEdit'
 import Invoices from './pages/Invoices'
+import InvoicesDetails from './pages/InvoicesDetails'
 import Appointments from './pages/Appointments'
 import ServicesManagement from './pages/ServicesManagement'
 import ServiceDetails from './pages/ServiceDetails'
@@ -72,6 +73,10 @@ const App = () => {
 
           {/* Invoices Routes */}
           <Route path="/invoices" element={<Invoices user={user} />} />
+          <Route
+            path="/invoices/:id"
+            element={<InvoicesDetails user={user} />}
+          />
 
           {/* Appointments Routes */}
           <Route path="/appointments" element={<Appointments user={user} />} />
