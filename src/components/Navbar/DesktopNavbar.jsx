@@ -37,12 +37,12 @@ const DesktopNavbar = ({ user, logOut }) => {
 							>
 								Dashboard
 							</Link>
-							<Link
+							{/* <Link
 								to="/dashboard"
 								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"
 							>
 								Profile
-							</Link>
+							</Link> */}
 							<Link
 								to="/appointments"
 								className="hover:bg-[#222935] text-[#8896AB] px-4 py-1.5 rounded-xl"

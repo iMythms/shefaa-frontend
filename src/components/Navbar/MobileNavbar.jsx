@@ -59,13 +59,13 @@ const MobileNavbar = ({ user, logOut, isMenuOpen, setIsMenuOpen }) => {
 							>
 								Dashboard
 							</Link>
-							<Link
+							{/* <Link
 								to="/dashboard"
 								className="text-[#8896AB] text-lg py-2"
 								onClick={() => setIsMenuOpen(false)}
 							>
 								Profile
-							</Link>
+							</Link> */}
 							<Link
 								to="/appointments"
 								className="text-[#8896AB] text-lg py-2"
